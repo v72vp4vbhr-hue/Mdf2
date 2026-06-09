@@ -250,9 +250,9 @@ function run() {
             var p = Math.floor(item.count/packSize); var l = item.count%packSize;
             var countTxt = p>0 ? (p + ' пач.' + (l>0 ? ' и ' + l + ' шт.' : '')) : (l + ' шт.');
             waText += "\n" + (idx+1) + ". Пилить: " + countTxt + " (всего " + item.count + " реек)\nСхема: ";
+            var parts = [];
             
             var visual = '<div class="visual-slat">'; var used = 0;
-            var parts = [];
             for(var i=0; i<uniqueLengths.length; i++) {
                 for(var c=0; c<item.pattern[i]; c++) {
                     visual += '<div class="slat-part color-normal" style="flex-grow: ' + uniqueLengths[i] + '">' + uniqueLengths[i] + '</div>';
@@ -298,5 +298,12 @@ function copyText() {
     }, 2000);
 }
 </script>
+
+<script>
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./sw.js");
+}
+</script>
+
 </body>
 </html>
